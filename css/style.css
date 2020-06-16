@@ -87,7 +87,7 @@ section.banner #slider .slide button {
     position: absolute;
     top: 50%;
 
-    transition: .3s;
+    transition: .5s;
     opacity: 0;
     overflow: hidden;
 }
