@@ -76,6 +76,26 @@ function out(){
 }
 
 
+//efeito da navbar selecionada
+
+var marker = document.querySelector('#marker');
+var itemMenu = document.querySelectorAll('#desktop a');
+
+indicador(itemMenu[0]);
+
+function indicador(e) {
+    marker.style.left = e.offsetLeft+"px";
+    marker.style.width = e.offsetWidth+"px";
+}
+
+itemMenu.forEach(link => {
+    link.addEventListener('click', (e) => {
+        indicador(e.target);
+    })
+})
+
+
+
 //Animação de slide
 var sliderCont = 2;
 var letreiro = document.getElementById('letreiro');

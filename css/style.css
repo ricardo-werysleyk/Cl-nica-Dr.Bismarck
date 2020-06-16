@@ -182,8 +182,24 @@ section.banner #desktop .logo {
 }
 
 section.banner #desktop > ul {
+    position: relative;
     display: flex;
 }
+
+section.banner #desktop > ul #marker {
+    width: 0;
+    height: 4px;
+    border-radius: 2px;
+
+    background-color: #fff;
+    
+    position: absolute;
+    left: 0;
+    top: 60%;
+
+    transition: .5s;
+}
+
 section.banner #desktop > ul li {
     list-style-type: none;
 }
