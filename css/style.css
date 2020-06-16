@@ -8,39 +8,217 @@ font-family: 'Montserrat', sans-serif; */
     box-sizing: border-box;
 }
 
+:root {
+    --cor: #0f4c81;
+    --corTrans: #0f4c817a;
+    --corTextApresentacao: white;
+}
+
 html, body {
     height: 100%;
 }
 
 .container {
     width: 100%;
-    max-width: 1080px;
+    max-width: 1024px;
     margin: 0 auto;
 }
 
 section.banner {
     width: 100%;
     height: 100%;
-    background-color: brown;
+
+    display: flex;
 }
 
-section.banner .slider {
-    width: 100%;
-    height: 100%;
+/* SLIDER  */
 
-    background-image: url(../assets/garganta.jpg);
-    background-size: cover;
-    background-position: center;
+section.banner #slider {
+    width: 100%;
+    height: calc(100% - 95px);
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 
     position: relative;
 }
+section.banner #slider .slide {
+    width: 100%;
+    height: 100%;
+    
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 
-section.banner .desktop {
+    position: relative;
+
+    overflow: hidden;
+    transition: scale 1s ease-in-out;
+}
+section.banner #slider .slide h1 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--corTextApresentacao);
+    font-size: 50px;
+    font-weight: normal;
+    text-align: center;
+    line-height: 60vh;
+    
+    position: absolute;
+    z-index: 3;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+section.banner #slider .slide button {
+    width: 200px;
+    height: 40px;
+    border: 0;
+    border-radius: 8px;
+    background-color: var(--corTrans);
+    color: white;
+
+    cursor: pointer;
+
+    position: absolute;
+    top: 50%;
+
+    transition: .3s;
+    opacity: 0;
+    overflow: hidden;
+}
+section.banner #slider .slide button:hover {
+    background-color: var(--cor);
+}
+
+section.banner #slider .slide .overflow {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+section.banner #slider #fundo1 {
+    background-image: url(../assets/ouvido.jpg);
+    background-position: -200px;
+}
+section.banner #slider #fundo2 {
+    background-image: url(../assets/nariz.jpg);
+    background-position: center;
+}
+section.banner #slider #fundo3 {
+    background-image: url(../assets/garganta.jpg);
+    background-position: 600px;
+}
+
+/* Apresentação  */
+
+.apresentacao {
+    width: 100%;
+    height: calc(100% - 95px);
+    padding: 0 2%;
+    margin: 0 auto;
+
+    /* position: absolute;
+    left: 50%;
+    top: 8%;
+    transform: translateX(-50%); */
+
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+
+    cursor: default;
+}
+.apresentacao > div {
+    width: 100%;
+    height: 40%;
+    /* background-color: #0f4c8180; */
+}
+
+.apresentacao h1 , .apresentacao p {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--corTextApresentacao);
+}
+
+.apresentacao h1 {
+    font-weight: normal;
+    font-size: 60px;
+    margin-top: 50px;
+}
+.apresentacao p {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Menu Desktop  */
+section.banner #desktop {
     position: absolute;
     bottom: 0;
 
     width: 100%;
-    height: 75px;
+    height: 95px;
+    padding: 0 2%;
 
-    background-color: #0F4C81;
+    background-color: var(--cor);
+
+    display: flex;
+    justify-content: center;
+}
+
+section.banner #desktop .logo {
+    /* width: 285px; */
+    height: 75px;
+    
+    align-self: center;
+}
+
+section.banner #desktop > ul {
+    display: flex;
+}
+section.banner #desktop > ul li {
+    list-style-type: none;
+}
+section.banner #desktop > ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-family: 'Lato', sans-serif;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    height: 100%;
+    padding: 0 15px;
+    text-align: center;
+
+    transition: .4s;
+}
+section.banner #desktop > ul li a:hover{
+    background-color: #093963;
+}
+section.banner #desktop > ul li a:hover i {
+    font-size: 30px;
+}
+section.banner #desktop > ul li a i {
+    margin-bottom: 5px;
+    font-size: 18px;
+    display: none;
+}
+section.banner #desktop > ul li a p {
+    font-size: 15px;
+}
+
+
+section.sobre {
+    height: 2000px;
+    background-color: #ccc;
 }
