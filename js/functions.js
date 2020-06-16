@@ -95,6 +95,18 @@ itemMenu.forEach(link => {
 })
 
 
+//efeito da scrollBar
+
+var progressbar = document.getElementById("progressbar");
+var totalHeight = document.body.scrollHeight - window.innerHeight;
+
+
+function animScroll() {
+    var progressHeight = (window.pageYOffset / totalHeight) * 100;
+
+    progressbar.style.height = progressHeight + "%";
+}
+
 
 //Animação de slide
 var sliderCont = 2;
@@ -127,7 +139,10 @@ var especialidades = ["OUVIDO", "NARIZ", "GARGANTA"];
 
 
 //Scroll NavBar
-window.onscroll = function() {myFunction()};
+window.onscroll = function() {
+    myFunction();
+    animScroll();
+};
 
 // Get the navbar
 var navbarDesktop = document.getElementById("desktop");
