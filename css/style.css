@@ -54,7 +54,7 @@ html, body {
     background: linear-gradient(to top, var(--cor),var(--cor2));
 }
 
-section.banner {
+section#inicio {
     width: 100%;
     height: 100%;
 
@@ -65,64 +65,47 @@ section.banner {
 
 /* SLIDER  */
 
-section.banner #slider {
+section#inicio #slider {
     width: 100%;
     height: 100%;
-    /* height: calc(100% - 95px); */
-
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    position: relative;
 }
-section.banner #slider .slide {
+section#inicio #slider .slide {
     width: 100%;
     height: 100%;
     
     background-size: cover;
     background-attachment: fixed;
 
-    position: relative;
-}
-section.banner #slider .slide h1 {
-    font-family: 'Montserrat', sans-serif;
-    color: var(--corTextApresentacao);
-    font-size: 50px;
-    font-weight: normal;
-    text-align: center;
-    
     position: absolute;
-    z-index: 3;
-    top: 200px;
+    left: 0;
+    top: 0;
 
-    width: 100%;
-    height: 100%;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    transition: opacity 2s ease-in-out;
 }
 
-section.banner #slider .slide button {
+section#inicio #slider button {
     width: 200px;
     height: 40px;
     border: 0;
     border-radius: 20px;
-    margin-top: 50px;
 
     color: white;
     background: linear-gradient(90deg,var(--cor),var(--cor2));
     cursor: pointer;
 
     position: relative;
-    /* top: 20%; */
+    left: 2%;
+    top: 60%;
+    z-index: 5;
 
     transition: .5s;
-    opacity: 0;
     overflow: hidden;
 }
-section.banner #slider .slide button:focus{
+section#inicio #slider button:focus{
     outline: none;
 }
-section.banner > #slider > .slide > h1 > button > span {
+section#inicio > #slider button > span {
     position: absolute;
 
     background-color: white;
@@ -146,8 +129,10 @@ section.banner > #slider > .slide > h1 > button > span {
     }
 }
 
-section.banner #slider .slide .overflow {
+section#inicio #slider .overflow {
     position: absolute;
+    left: 0;
+    top: 0;
 
     width: 100%;
     height: 100%;
@@ -156,15 +141,17 @@ section.banner #slider .slide .overflow {
 
 #fundo1 {
     background-image: url(../assets/ouvido.jpg);
-    background-position: -200px;
+    background-position: center;
+    transform: scaleX(-1);
 }
 #fundo2 {
     background-image: url(../assets/nariz.jpg);
-    background-position: center 70px;
+    background-position: 0 70px;
 }
 #fundo3 {
     background-image: url(../assets/garganta.jpg);
-    background-position: 600px;
+    background-position: center;
+    transform: scaleX(-1);
 }
 
 
@@ -173,8 +160,9 @@ section.banner #slider .slide .overflow {
 /* Apresentação  */
 .apresentacao {
     width: 100%;
+    max-width: 800px;
     height: 100%;
-    /* height: calc(100% - 95px); */
+
     padding: 0 2%;
     margin: 0 auto;
 
@@ -182,9 +170,7 @@ section.banner #slider .slide .overflow {
     top: 100px;
     display: flex;
     flex-direction: column;
-    align-items: center;
 
-    text-align: center;
     cursor: default;
 }
 .apresentacao > div {
@@ -192,7 +178,7 @@ section.banner #slider .slide .overflow {
     height: 40%;
 }
 
-.apresentacao h1 , .apresentacao p {
+.apresentacao h1, .apresentacao h2 , .apresentacao p {
     font-family: 'Montserrat', sans-serif;
     color: var(--corTextApresentacao);
 }
@@ -201,15 +187,22 @@ section.banner #slider .slide .overflow {
     font-weight: normal;
     font-size: 60px;
 }
+.apresentacao h2 {
+    font-weight: normal;
+    font-size: 30px;
+}
 .apresentacao p {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
+    counter-reset: #bbb;
+
+    margin-top: 30px;
 }
 
 
 
 /* Menu Desktop  */
-section.banner #desktop {
+section#inicio #desktop {
     position: fixed;
     z-index: 5;
     top: 0;
@@ -224,17 +217,17 @@ section.banner #desktop {
     justify-content: center;
 }
 
-section.banner #desktop .logo {
+section#inicio #desktop .logo {
     height: 50px;    
     align-self: center;
 }
 
-section.banner #desktop > ul {
+section#inicio #desktop > ul {
     position: relative;
     display: flex;
 }
 
-section.banner #desktop > ul #marker {
+section#inicio #desktop > ul #marker {
     width: 0;
     height: 4px;
     border-radius: 2px;
@@ -248,10 +241,10 @@ section.banner #desktop > ul #marker {
     transition: .5s;
 }
 
-section.banner #desktop > ul li {
+section#inicio #desktop > ul li {
     list-style-type: none;
 }
-section.banner #desktop > ul li a {
+section#inicio #desktop > ul li a {
     text-decoration: none;
     color: #fff;
     font-family: 'Lato', sans-serif;
@@ -266,23 +259,99 @@ section.banner #desktop > ul li a {
 
     transition: .4s;
 }
-section.banner #desktop > ul li a:hover{
+section#inicio #desktop > ul li a:hover{
     background-color: #093963;
 }
-section.banner #desktop > ul li a:hover i {
+section#inicio #desktop > ul li a:hover i {
     font-size: 30px;
 }
-section.banner #desktop > ul li a i {
+section#inicio #desktop > ul li a i {
     margin-bottom: 5px;
     font-size: 18px;
     display: none;
 }
-section.banner #desktop > ul li a p {
+section#inicio #desktop > ul li a p {
     font-size: 15px;
 }
 
 
-section.sobre {
-    height: 2000px;
+section#sobre {
+    width: 100%;
+
+    padding: 75px 2% 0 2%;
+}
+
+section#sobre .title-sobre {
+    width: 50%;
+    min-width: 600px;
+    height: 90px;
+    padding: 15px;
+
+    border-radius: 0 25px 25px 0;
+
+    background-color: var(--cor);
+    position: relative;
+}
+section#sobre .title-sobre a {
+    width: 200px;
+    height: 70px;
+    border-radius: 20px;
+    padding: 0 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: 'Lato', sans-serif;
+    text-decoration: none;
+    font-size: 14px;
+    color: var(--corTextApresentacao);
+
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(50%,-50%);
+
+    background-color: #61cf70;
+}
+section#sobre .title-sobre a:hover {
+    background-color: #46bb55;
+}
+
+section#sobre .title-sobre a i {
+    font-size: 26px;
+    margin-right: 4px;
+}
+
+section#sobre .title-sobre h1{
+    color: var(--corTextApresentacao);
+    font-family: 'Lato', sans-serif;
+}
+
+
+section#sobre .sobre-content {
+    width: 100%;
+    height: 400px;
+
+    display: flex;
+}
+
+section#sobre .sobre-content .sobre-descricao {
+    width: calc(50% - 50px);
+    height: 100%;
+    
     background-color: #ccc;
+}
+section#sobre .sobre-content .sobre-imgs {
+    width: calc(50% + 50px);
+    height: 100%;
+    
+    background-color: rgb(237, 100, 230);
+    background-image: url(../assets/garganta.jpg);
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    border-left: 100px solid #ccc;
+    border-bottom: 400px solid transparent;
 }

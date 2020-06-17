@@ -5,75 +5,10 @@
 var slideApre = document.querySelectorAll('.slide');
 
 var especialidadeApre = document.querySelectorAll('.slide > h1');
-var buttonApre = document.querySelectorAll('.slide > h1 > button');
-var overApre = document.querySelectorAll('.slide > .overflow');
+var buttonApre = document.querySelector('#slider > button');
+var overApre = document.querySelector('#slider > .overflow');
 
 var apresentacao = document.querySelector('.apresentacao');
-
-
-document.querySelectorAll('.slide > h1')[0].addEventListener('mouseover', function(){
-
-    for(var i = 0; i < 3; i++){
-        if(i == 0){
-            overApre[i].style.backgroundColor = "rgba(0, 0, 0, 0.7)";
-            especialidadeApre[i].style.opacity = "1";
-            buttonApre[i].style.opacity = "1";
-        }else{
-            overApre[i].style.backgroundColor = "rgba(0, 0, 0, 0.4)";
-            especialidadeApre[i].style.opacity = "0.2";
-            buttonApre[i].style.opacity = "0";
-        }
-    }
-
-    apresentacao.style.opacity = "0.5";
-});
-
-document.querySelectorAll('.slide > h1')[1].addEventListener('mouseover', function(){
-
-    for(var i = 0; i < 3; i++){
-        if(i == 1){
-            overApre[i].style.backgroundColor = "rgba(0, 0, 0, 0.7)";
-            especialidadeApre[i].style.opacity = "1";
-            buttonApre[i].style.opacity = "1";
-        }else{
-            overApre[i].style.backgroundColor = "rgba(0, 0, 0, 0.4)";
-            especialidadeApre[i].style.opacity = "0.2";
-            buttonApre[i].style.opacity = "0";
-        }
-    }
-
-    apresentacao.style.opacity = "0.5";
-});
-
-document.querySelectorAll('.slide > h1')[2].addEventListener('mouseover', function(){
-
-    for(var i = 0; i < 3; i++){
-        if(i == 2){
-            overApre[i].style.backgroundColor = "rgba(0, 0, 0, 0.7)";
-            especialidadeApre[i].style.opacity = "1";
-            buttonApre[i].style.opacity = "1";
-        }else{
-            overApre[i].style.backgroundColor = "rgba(0, 0, 0, 0.4)";
-            especialidadeApre[i].style.opacity = "0.2";
-            buttonApre[i].style.opacity = "0";
-        }
-    }
-
-    apresentacao.style.opacity = "0.5";
-});
-
-for(var i =0; i < especialidadeApre.length; i++){
-    especialidadeApre[i].addEventListener('mouseout', out);
-}
-
-function out(){
-    for(var i =0; i < especialidadeApre.length; i++){
-        especialidadeApre[i].style.opacity = "1";
-        overApre[i].style.backgroundColor = "rgba(0, 0, 0, 0.4)";
-        buttonApre[i].style.opacity = "0";
-    }
-    apresentacao.style.opacity = "1";
-}
 
 
 //efeito da navbar selecionada
@@ -100,6 +35,9 @@ itemMenu.forEach(link => {
 var progressbar = document.getElementById("progressbar");
 var totalHeight = document.body.scrollHeight - window.innerHeight;
 
+window.onscroll = function() {
+    animScroll();
+};
 
 function animScroll() {
     var progressHeight = (window.pageYOffset / totalHeight) * 100;
@@ -107,55 +45,12 @@ function animScroll() {
     progressbar.style.height = progressHeight + "%";
 }
 
+
 //efeito de click do botão da apresentação
 
-// buttonApre.forEach( btn => {
-//     btn.addEventListener('click', function(e){
-//         let x = e.clientX - e.target.offsetLeft;
-//         let y = e.clientY - e.target.offsetTop - 200;
-
-//         let ripples = document.createElement('span');
-//         ripples.style.left = x + 'px';
-//         ripples.style.top = y + 'px';
-
-//         this.appendChild(ripples);
-
-//         setTimeout(() => {
-//             ripples.remove();
-//         },1000);
-//     })
-// })
-buttonApre[0].addEventListener('click', function(e){
+buttonApre.addEventListener('click', function(e){
     let x = e.clientX - e.target.offsetLeft;
-    let y = e.clientY - e.target.offsetTop - 200;
-
-    let ripples = document.createElement('span');
-    ripples.style.left = x + 'px';
-    ripples.style.top = y + 'px';
-
-    this.appendChild(ripples);
-
-    setTimeout(() => {
-        ripples.remove();
-    },1000);
-})
-buttonApre[1].addEventListener('click', function(e){
-    let x = e.clientX - e.target.offsetLeft - (window.innerWidth/3);
-    let y = e.clientY - e.target.offsetTop - 200;
-
-    let ripples = document.createElement('span');
-    ripples.style.left = x + 'px';
-    ripples.style.top = y + 'px';
-
-    this.appendChild(ripples);
-
-    setTimeout(() => {
-        ripples.remove();
-    },1000);
-})
-buttonApre[2].addEventListener('click', function(e){
-    let x = e.clientX - e.target.offsetLeft - (window.innerWidth/3)*2;
-    let y = e.clientY - e.target.offsetTop - 200;
+    let y = e.clientY - e.target.offsetTop;
 
     let ripples = document.createElement('span');
     ripples.style.left = x + 'px';
@@ -170,53 +65,24 @@ buttonApre[2].addEventListener('click', function(e){
 
 
 //Animação de slide
-// var sliderCont = 2;
-// var letreiro = document.getElementById('letreiro');
-// var especialidades = ["OUVIDO", "NARIZ", "GARGANTA"];
+var sliderCont = 2;
 
-// letreiro.innerHTML = especialidades[sliderCont];
-// slider()
+slider()
 
-// function slider() {
-//     var slideInterval = setInterval(function(){
+function slider() {
+    var slideInterval = setInterval(function(){
 
-//         sliderCont--;
-//         if(sliderCont < 0){
-//             sliderCont = 2;
-//         }
+        sliderCont--;
+        if(sliderCont < 0){
+            sliderCont = 2;
+        }
 
-//         for(var i = 0; i < slide.length; i++){
-//             if(i == sliderCont){
-//                 slide[i].style.opacity = 1;
-//             }else {
-//                 slide[i].style.opacity = 0;
-//             }
-//         }
-
-//         letreiro.innerHTML = especialidades[sliderCont];
-
-//     }, 5000)
-// }
-
-
-//Scroll NavBar
-window.onscroll = function() {
-    // myFunction();
-    animScroll();
-};
-
-// // Get the navbar
-// var navbarDesktop = document.getElementById("desktop");
-
-// // Get the offset position of the navbar
-// var sticky = navbarDesktop.offsetTop;
-
-// function myFunction() {
-//   if (window.pageYOffset >= sticky) {
-//     navbarDesktop.style.position = "fixed";
-//     navbarDesktop.style.top = "0";
-//   } else {
-//     navbarDesktop.style.position = "absolute";
-//     navbarDesktop.style.top = "calc(100% - 95px)";
-//   }
-// }
+        for(var i = 0; i < slideApre.length; i++){
+            if(i == sliderCont){
+                slideApre[i].style.opacity = 1;
+            }else {
+                slideApre[i].style.opacity = 0;
+            }
+        }
+    }, 5000)
+}
