@@ -18,6 +18,7 @@ font-family: 'Montserrat', sans-serif; */
     --corTrans: #0f4c817a;
     --corTextApresentacao: white;
     --corOver: rgba(0, 0, 0, 0.4);
+    --sombra: rgba(80, 77, 77, 0.7);
 }
 
 html, body {
@@ -319,7 +320,7 @@ section#sobre .title-sobre a {
     transform: translate(50%,-50%);
 
     background-color: #61cf70;
-    box-shadow: -2px 2px 2px 0 rgba(80, 77, 77, 0.7);
+    box-shadow: -2px 2px 2px 0 var(--sombra);
 }
 section#sobre .title-sobre a:hover {
     background-color: #46bb55;
@@ -343,7 +344,7 @@ section#sobre .sobre-content {
 
     position: relative;
 
-    box-shadow: -2px 2px 5px 0 rgba(80, 77, 77, 0.7);
+    box-shadow: -2px 2px 5px 0 var(--sombra);
 }
 
 section#sobre .sobre-content .camada0, section#sobre .sobre-content .camada1{
@@ -376,6 +377,8 @@ section#sobre .sobre-content .camada0 >  div:nth-of-type(2) {
     position: absolute;
     left: 0;
     top: 0;
+
+    transition: 1s;
 }
 
 #imgSobre0 {
@@ -468,6 +471,8 @@ section#sobre .sobreBullets {
     background-color: #aaa;
 
     cursor: pointer;
+
+    box-shadow: -2px 2px 5px 0 var(--sombra);
 }
 
 .bulletSelect {

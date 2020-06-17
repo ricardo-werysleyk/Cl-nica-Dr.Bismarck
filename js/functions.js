@@ -10,6 +10,10 @@ var overApre = document.querySelector('#slider > .overflow');
 
 var apresentacao = document.querySelector('.apresentacao');
 
+//sessões
+var sectionSobre = document.getElementById('sobre');
+var sectionServicos = document.getElementById('servicos');
+
 
 //efeito da navbar selecionada
 
@@ -29,6 +33,15 @@ itemMenu.forEach(link => {
     })
 })
 
+function animNav() {
+    
+    if(window.pageYOffset >= 0 && window.pageYOffset < sectionSobre.offsetTop){
+        indicador(itemMenu[0]);
+    }else if(window.pageYOffset >= sectionSobre.offsetTop && window.pageYOffset < sectionServicos.offsetTop){
+        indicador(itemMenu[1]);
+    }
+}
+
 
 //efeito da scrollBar
 
@@ -37,6 +50,7 @@ var totalHeight = document.body.scrollHeight - window.innerHeight;
 
 window.onscroll = function() {
     animScroll();
+    animNav();
 };
 
 function animScroll() {
@@ -50,7 +64,7 @@ function animScroll() {
 
 buttonApre.addEventListener('click', function(e){
     let x = e.clientX - e.target.offsetLeft;
-    let y = e.clientY - e.target.offsetTop - window.pageXOffset.top;
+    let y = e.clientY - e.target.offsetTop + window.pageYOffset;
 
     let ripples = document.createElement('span');
     ripples.style.left = x + 'px';
@@ -93,8 +107,10 @@ function slider() {
 var titleSobre = document.querySelector(".sobre-descricao h1");
 var paragrafoSobre = document.querySelector(".sobre-descricao p");
 var sliderSobre = document.querySelector("#sliderSobreWraper");
+var sobreBullets = document.querySelectorAll('.sobreBullets > .bullet');
 
 var sobreCont = 0;
+var slideSobreTimer = 4000;
 
 var titulos = [
     "CLÍNICA REFERÊNCIA", 
@@ -108,9 +124,102 @@ var descricoes = [
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vitae quam pretium, finibus lectus id, facilisis odio. Nunc feugiat orci nec mollis consectetur. Vestibulum at ornare nisi. Mauris nisi dolor, feugiat iaculis neque et, elementum finibus eros."
 ];
 
+    //inicialização
 titleSobre.innerHTML = titulos[sobreCont];
 paragrafoSobre.innerHTML = descricoes[sobreCont];
+sliderSobre.style.left = "0";
+sobreBullets[sobreCont].classList.add("bulletSelect");
 
 var intervaloSlideSobre = setInterval( () => {
+    slideSobre();
+},slideSobreTimer);
 
-},4000)
+function slideSobre() {
+
+    //sistema contador
+    sobreCont++;
+    if(sobreCont > 3){
+        sobreCont = 0;
+    }
+
+    //Textos
+
+    titleSobre.innerHTML = titulos[sobreCont];
+    paragrafoSobre.innerHTML = descricoes[sobreCont];
+
+    //movimentação das imagens
+
+    if(sobreCont == 0){
+
+        sliderSobre.style.left = "0";
+
+    }else if(sobreCont == 1){
+
+        sliderSobre.style.left = "-100%";
+
+    }else if(sobreCont == 2){
+
+        sliderSobre.style.left = "-200%";
+
+    }else if(sobreCont == 3){
+
+        sliderSobre.style.left = "-300%";
+
+    }
+
+    //sistema das bullets
+
+    for(var i = 0; i < sobreBullets.length; i++){
+        if(i == sobreCont){
+            sobreBullets[i].classList.add("bulletSelect");
+        }else {
+            sobreBullets[i].classList.remove("bulletSelect");
+        }
+    }
+
+}
+
+//SISTEMA DE CLICKS DAS BULLETS
+
+function currentSlide(index) {
+
+    sobreCont = index;
+
+    clearInterval(intervaloSlideSobre);
+
+    titleSobre.innerHTML = titulos[index];
+    paragrafoSobre.innerHTML = descricoes[index];
+
+    if(index == 0){
+
+        sliderSobre.style.left = "0";
+
+    }else if(index == 1){
+
+        sliderSobre.style.left = "-100%";
+
+    }else if(index == 2){
+
+        sliderSobre.style.left = "-200%";
+
+    }else if(index == 3){
+
+        sliderSobre.style.left = "-300%";
+
+    }
+
+    for(var i = 0; i < sobreBullets.length; i++){
+        if(i == index){
+            sobreBullets[i].classList.add("bulletSelect");
+        }else {
+            sobreBullets[i].classList.remove("bulletSelect");
+        }
+    }
+
+    setTimeout(() => {
+        var intervaloSlideSobre = setInterval( () => {
+            slideSobre();
+        },slideSobreTimer);
+    },slideSobreTimer);
+
+}
