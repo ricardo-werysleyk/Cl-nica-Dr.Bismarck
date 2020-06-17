@@ -275,17 +275,23 @@ section#inicio #desktop > ul li a p {
 }
 
 
+
+/* SESSÃO SOBRE  */
+
+
 section#sobre {
     width: 100%;
 
     padding: 75px 2% 0 2%;
+
+    position: relative;
 }
 
 section#sobre .title-sobre {
     width: 50%;
     min-width: 600px;
     height: 90px;
-    padding: 15px;
+    padding-left: 15px;
 
     border-radius: 0 25px 25px 0;
 
@@ -313,6 +319,7 @@ section#sobre .title-sobre a {
     transform: translate(50%,-50%);
 
     background-color: #61cf70;
+    box-shadow: -2px 2px 2px 0 rgba(80, 77, 77, 0.7);
 }
 section#sobre .title-sobre a:hover {
     background-color: #46bb55;
@@ -326,32 +333,154 @@ section#sobre .title-sobre a i {
 section#sobre .title-sobre h1{
     color: var(--corTextApresentacao);
     font-family: 'Lato', sans-serif;
+    line-height: 90px;
 }
 
 
 section#sobre .sobre-content {
     width: 100%;
-    height: 400px;
+    height: 450px;
+
+    position: relative;
+
+    box-shadow: -2px 2px 5px 0 rgba(80, 77, 77, 0.7);
+}
+
+section#sobre .sobre-content .camada0, section#sobre .sobre-content .camada1{
+    width: 100%;
+    height: 100%;
 
     display: flex;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+section#sobre .sobre-content .camada0 > div:nth-of-type(1) {
+    width: calc(40%);
+    height: 100%;
+}
+section#sobre .sobre-content .camada0 >  div:nth-of-type(2) {
+    width: calc(60%);
+    height: 100%;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+#sliderSobreWraper {
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+#imgSobre0 {
+    width: 100%;
+    height: 100%;
+
+    background-image: url(../assets/sobre0.jpg);
+    background-size: cover;
+
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+#imgSobre1 {
+    width: 100%;
+    height: 100%;
+
+    background-image: url(../assets/sobre1.jpg);
+    background-size: cover;
+    
+    position: absolute;
+    left: 100%;
+    top: 0;
+}
+#imgSobre2 {
+    width: 100%;
+    height: 100%;
+
+    background-image: url(../assets/sobre2.jpg);
+    background-size: cover;
+
+    position: absolute;
+    left: 200%;
+    top: 0;
+}
+#imgSobre3 {
+    width: 100%;
+    height: 100%;
+
+    background-image: url(../assets/sobre3.jpg);
+    background-size: cover;
+
+    position: absolute;
+    left: 300%;
+    top: 0;
 }
 
 section#sobre .sobre-content .sobre-descricao {
     width: calc(50% - 50px);
     height: 100%;
+    padding: 20px 2%;
     
-    background-color: #ccc;
+    background-color: rgb(204, 233, 246);
+
+    color: #404040;
+    font-family: 'Montserrat', sans-serif;
 }
+section#sobre .sobre-content .sobre-descricao h1 {
+    margin-top: 60px;
+    margin-bottom: 25px;
+    font-weight: normal;
+}
+section#sobre .sobre-content .sobre-descricao p {
+    text-align: justify;
+}
+
 section#sobre .sobre-content .sobre-imgs {
     width: calc(50% + 50px);
     height: 100%;
-    
-    background-color: rgb(237, 100, 230);
-    background-image: url(../assets/garganta.jpg);
-    background-size: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
 
-    border-left: 100px solid #ccc;
-    border-bottom: 400px solid transparent;
+    border-left: 100px solid rgb(204, 233, 246);
+    border-bottom: 450px solid rgba(0, 0, 0, 0);
+}
+
+section#sobre .sobreBullets {
+    position: absolute;
+    left: 50%;
+    bottom: 10px;
+    transform: translateX(-50%);
+}
+
+.bullet {
+    display: inline-block;
+
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin: 0 5px;
+
+    background-color: #aaa;
+
+    cursor: pointer;
+}
+
+.bulletSelect {
+    background-color: var(--cor);
+}
+
+
+/* SERVIÇOS  */
+
+
+#servicos {
+    width: 100%;
+    height: 100%;
+
+    background-color: #fff;
 }

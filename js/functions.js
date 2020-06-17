@@ -50,7 +50,7 @@ function animScroll() {
 
 buttonApre.addEventListener('click', function(e){
     let x = e.clientX - e.target.offsetLeft;
-    let y = e.clientY - e.target.offsetTop;
+    let y = e.clientY - e.target.offsetTop - window.pageXOffset.top;
 
     let ripples = document.createElement('span');
     ripples.style.left = x + 'px';
@@ -64,7 +64,7 @@ buttonApre.addEventListener('click', function(e){
 })
 
 
-//Animação de slide
+//Animação de slide da sessão inicio
 var sliderCont = 2;
 
 slider()
@@ -86,3 +86,31 @@ function slider() {
         }
     }, 5000)
 }
+
+
+//SLIDE DA SESSÃO SOBRE
+
+var titleSobre = document.querySelector(".sobre-descricao h1");
+var paragrafoSobre = document.querySelector(".sobre-descricao p");
+var sliderSobre = document.querySelector("#sliderSobreWraper");
+
+var sobreCont = 0;
+
+var titulos = [
+    "CLÍNICA REFERÊNCIA", 
+    "CORPO CLÍNICO QUALIFICADO", 
+    "MELHORANDO VIDAS DESDE 2000", 
+    "NOSSA EQUIPE"];
+var descricoes = [
+    "Estamos aparelhados para atuar especialmente na otorrinolaringologia, tanto clínica como cirúrgica adulta ou pediátrica, e voltada, naturalmente, para a saúde das vias aéreas superiores (orelha, nariz e garganta).",
+    "Serviço completo de fonoaudiologia incluindo laboratórios com exames altamente qualificados, fisioterapia labiríntica e qualificado corpo de funcionários.",
+    "Nasceu no ano de 2000, A necessidade em busca de um serviço especializado e qualificado em otorrinolaringologia, observando a carência deste atendimento na capital de MA. Assim, surge a Clínica Dr. Bismarck Aguiar",
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vitae quam pretium, finibus lectus id, facilisis odio. Nunc feugiat orci nec mollis consectetur. Vestibulum at ornare nisi. Mauris nisi dolor, feugiat iaculis neque et, elementum finibus eros."
+];
+
+titleSobre.innerHTML = titulos[sobreCont];
+paragrafoSobre.innerHTML = descricoes[sobreCont];
+
+var intervaloSlideSobre = setInterval( () => {
+
+},4000)
