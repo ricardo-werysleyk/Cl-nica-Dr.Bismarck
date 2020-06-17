@@ -14,8 +14,10 @@ font-family: 'Montserrat', sans-serif; */
 
 :root {
     --cor: #0f4c81;
+    --cor2: #27b4ca;
     --corTrans: #0f4c817a;
     --corTextApresentacao: white;
+    --corOver: rgba(0, 0, 0, 0.4);
 }
 
 html, body {
@@ -49,7 +51,7 @@ html, body {
     height: 0%;
     border-radius: 0 0 3px 3px;
 
-    background: linear-gradient(to bottom, #008aff, #0f4c81);
+    background: linear-gradient(to top, var(--cor),var(--cor2));
 }
 
 section.banner {
@@ -57,18 +59,19 @@ section.banner {
     height: 100%;
 
     display: flex;
+    flex-direction: column-reverse;
 }
+
 
 /* SLIDER  */
 
 section.banner #slider {
     width: 100%;
-    height: calc(100% - 95px);
+    height: 100%;
+    /* height: calc(100% - 95px); */
 
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-
-    position: relative;
 }
 section.banner #slider .slide {
     width: 100%;
@@ -76,12 +79,8 @@ section.banner #slider .slide {
     
     background-size: cover;
     background-attachment: fixed;
-    background-repeat: no-repeat;
 
     position: relative;
-
-    overflow: hidden;
-    transition: scale 1s ease-in-out;
 }
 section.banner #slider .slide h1 {
     font-family: 'Montserrat', sans-serif;
@@ -89,10 +88,10 @@ section.banner #slider .slide h1 {
     font-size: 50px;
     font-weight: normal;
     text-align: center;
-    line-height: 60vh;
     
     position: absolute;
     z-index: 3;
+    top: 200px;
 
     width: 100%;
     height: 100%;
@@ -106,21 +105,45 @@ section.banner #slider .slide button {
     width: 200px;
     height: 40px;
     border: 0;
-    border-radius: 8px;
-    background-color: var(--corTrans);
-    color: white;
+    border-radius: 20px;
+    margin-top: 50px;
 
+    color: white;
+    background: linear-gradient(90deg,var(--cor),var(--cor2));
     cursor: pointer;
 
-    position: absolute;
-    top: 50%;
+    position: relative;
+    /* top: 20%; */
 
     transition: .5s;
     opacity: 0;
     overflow: hidden;
 }
-section.banner #slider .slide button:hover {
-    background-color: var(--cor);
+section.banner #slider .slide button:focus{
+    outline: none;
+}
+section.banner > #slider > .slide > h1 > button > span {
+    position: absolute;
+
+    background-color: white;
+
+    transform: translate(-50%,-50%);
+    pointer-events: none;
+    border-radius: 50%;
+
+    animation: btmAnim 1s linear infinite;
+}
+@keyframes btmAnim {
+    0%{
+        width: 0px;
+        height: 0px;
+        opacity: .5;
+    }
+    100%{
+        width: 500px;
+        height: 500px;
+        opacity: 0;
+    }
 }
 
 section.banner #slider .slide .overflow {
@@ -131,45 +154,42 @@ section.banner #slider .slide .overflow {
     background-color: rgba(0, 0, 0, 0.4);
 }
 
-section.banner #slider #fundo1 {
+#fundo1 {
     background-image: url(../assets/ouvido.jpg);
     background-position: -200px;
 }
-section.banner #slider #fundo2 {
+#fundo2 {
     background-image: url(../assets/nariz.jpg);
-    background-position: center;
+    background-position: center 70px;
 }
-section.banner #slider #fundo3 {
+#fundo3 {
     background-image: url(../assets/garganta.jpg);
     background-position: 600px;
 }
 
-/* Apresentação  */
 
+
+
+/* Apresentação  */
 .apresentacao {
     width: 100%;
-    height: calc(100% - 95px);
+    height: 100%;
+    /* height: calc(100% - 95px); */
     padding: 0 2%;
     margin: 0 auto;
 
-    /* position: absolute;
-    left: 50%;
-    top: 8%;
-    transform: translateX(-50%); */
-
     position: absolute;
+    top: 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
 
     text-align: center;
-
     cursor: default;
 }
 .apresentacao > div {
     width: 100%;
     height: 40%;
-    /* background-color: #0f4c8180; */
 }
 
 .apresentacao h1 , .apresentacao p {
@@ -180,20 +200,22 @@ section.banner #slider #fundo3 {
 .apresentacao h1 {
     font-weight: normal;
     font-size: 60px;
-    margin-top: 50px;
 }
 .apresentacao p {
     font-size: 20px;
     font-weight: bold;
 }
 
+
+
 /* Menu Desktop  */
 section.banner #desktop {
-    position: absolute;
-    bottom: 0;
+    position: fixed;
+    z-index: 5;
+    top: 0;
 
     width: 100%;
-    height: 95px;
+    height: 70px;
     padding: 0 2%;
 
     background-color: var(--cor);
@@ -203,9 +225,7 @@ section.banner #desktop {
 }
 
 section.banner #desktop .logo {
-    /* width: 285px; */
-    height: 75px;
-    
+    height: 50px;    
     align-self: center;
 }
 
@@ -223,7 +243,7 @@ section.banner #desktop > ul #marker {
     
     position: absolute;
     left: 0;
-    top: 60%;
+    top: 65%;
 
     transition: .5s;
 }

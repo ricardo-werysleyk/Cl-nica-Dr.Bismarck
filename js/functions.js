@@ -107,11 +107,72 @@ function animScroll() {
     progressbar.style.height = progressHeight + "%";
 }
 
+//efeito de click do botão da apresentação
+
+// buttonApre.forEach( btn => {
+//     btn.addEventListener('click', function(e){
+//         let x = e.clientX - e.target.offsetLeft;
+//         let y = e.clientY - e.target.offsetTop - 200;
+
+//         let ripples = document.createElement('span');
+//         ripples.style.left = x + 'px';
+//         ripples.style.top = y + 'px';
+
+//         this.appendChild(ripples);
+
+//         setTimeout(() => {
+//             ripples.remove();
+//         },1000);
+//     })
+// })
+buttonApre[0].addEventListener('click', function(e){
+    let x = e.clientX - e.target.offsetLeft;
+    let y = e.clientY - e.target.offsetTop - 200;
+
+    let ripples = document.createElement('span');
+    ripples.style.left = x + 'px';
+    ripples.style.top = y + 'px';
+
+    this.appendChild(ripples);
+
+    setTimeout(() => {
+        ripples.remove();
+    },1000);
+})
+buttonApre[1].addEventListener('click', function(e){
+    let x = e.clientX - e.target.offsetLeft - (window.innerWidth/3);
+    let y = e.clientY - e.target.offsetTop - 200;
+
+    let ripples = document.createElement('span');
+    ripples.style.left = x + 'px';
+    ripples.style.top = y + 'px';
+
+    this.appendChild(ripples);
+
+    setTimeout(() => {
+        ripples.remove();
+    },1000);
+})
+buttonApre[2].addEventListener('click', function(e){
+    let x = e.clientX - e.target.offsetLeft - (window.innerWidth/3)*2;
+    let y = e.clientY - e.target.offsetTop - 200;
+
+    let ripples = document.createElement('span');
+    ripples.style.left = x + 'px';
+    ripples.style.top = y + 'px';
+
+    this.appendChild(ripples);
+
+    setTimeout(() => {
+        ripples.remove();
+    },1000);
+})
+
 
 //Animação de slide
-var sliderCont = 2;
-var letreiro = document.getElementById('letreiro');
-var especialidades = ["OUVIDO", "NARIZ", "GARGANTA"];
+// var sliderCont = 2;
+// var letreiro = document.getElementById('letreiro');
+// var especialidades = ["OUVIDO", "NARIZ", "GARGANTA"];
 
 // letreiro.innerHTML = especialidades[sliderCont];
 // slider()
@@ -140,22 +201,22 @@ var especialidades = ["OUVIDO", "NARIZ", "GARGANTA"];
 
 //Scroll NavBar
 window.onscroll = function() {
-    myFunction();
+    // myFunction();
     animScroll();
 };
 
-// Get the navbar
-var navbarDesktop = document.getElementById("desktop");
+// // Get the navbar
+// var navbarDesktop = document.getElementById("desktop");
 
-// Get the offset position of the navbar
-var sticky = navbarDesktop.offsetTop;
+// // Get the offset position of the navbar
+// var sticky = navbarDesktop.offsetTop;
 
-function myFunction() {
-  if (window.pageYOffset >= sticky) {
-    navbarDesktop.style.position = "fixed";
-    navbarDesktop.style.top = "0";
-  } else {
-    navbarDesktop.style.position = "absolute";
-    navbarDesktop.style.top = "calc(100% - 95px)";
-  }
-}
+// function myFunction() {
+//   if (window.pageYOffset >= sticky) {
+//     navbarDesktop.style.position = "fixed";
+//     navbarDesktop.style.top = "0";
+//   } else {
+//     navbarDesktop.style.position = "absolute";
+//     navbarDesktop.style.top = "calc(100% - 95px)";
+//   }
+// }
