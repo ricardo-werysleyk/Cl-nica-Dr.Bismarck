@@ -12,7 +12,7 @@ var apresentacao = document.querySelector('.apresentacao');
 
 //sessões
 var sectionSobre = document.getElementById('sobre');
-var sectionServicos = document.getElementById('servicos');
+var sectionServicos = document.getElementById('especialidades');
 
 
 //efeito da navbar selecionada
