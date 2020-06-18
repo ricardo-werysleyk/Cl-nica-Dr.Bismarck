@@ -12,13 +12,15 @@ var apresentacao = document.querySelector('.apresentacao');
 
 //sessões
 var sectionSobre = document.getElementById('sobre');
-var sectionServicos = document.getElementById('especialidades');
+var sectionEspecialidades = document.getElementById('especialidades');
+var sectionConvenios = document.getElementById('convenios');
 
 
 //efeito da navbar selecionada
 
 var marker = document.querySelector('#marker');
 var itemMenu = document.querySelectorAll('#desktop a');
+var MenuDesk = document.querySelector('#desktop');
 
 indicador(itemMenu[0]);
 
@@ -37,9 +39,21 @@ function animNav() {
     
     if(window.pageYOffset >= 0 && window.pageYOffset < sectionSobre.offsetTop){
         indicador(itemMenu[0]);
-    }else if(window.pageYOffset >= sectionSobre.offsetTop && window.pageYOffset < sectionServicos.offsetTop){
+        // MenuDesk.style.backgroundColor = "var(--corTrans)";
+    }else if(window.pageYOffset >= sectionSobre.offsetTop && window.pageYOffset < sectionEspecialidades.offsetTop){
         indicador(itemMenu[1]);
+        // MenuDesk.style.backgroundColor = "var(--cor)";
+    }else if(window.pageYOffset >= sectionEspecialidades.offsetTop && window.pageYOffset < sectionConvenios.offsetTop){
+        indicador(itemMenu[2]);
+        // MenuDesk.style.backgroundColor = "var(--cor)";
     }
+
+    if(window.pageYOffset >= 0 && window.pageYOffset < 100){
+        MenuDesk.style.top = "0";
+    }else{
+        MenuDesk.style.top = "-75px";
+    }
+    
 }
 
 

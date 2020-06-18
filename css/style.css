@@ -150,7 +150,7 @@ section#inicio #slider .overflow {
 }
 #fundo2 {
     background-image: url(../assets/nariz.jpg);
-    background-position: 0 70px;
+    background-position: center;
 }
 #fundo3 {
     background-image: url(../assets/garganta.jpg);
@@ -215,7 +215,9 @@ section#inicio #desktop {
     height: 70px;
     padding: 0 2%;
 
-    background-color: var(--cor);
+    transition: .5s;
+
+    background-color: #0f4c81c2;
 
     display: flex;
     justify-content: center;
@@ -285,10 +287,27 @@ section#inicio #desktop > ul li a p {
 
 section#sobre {
     width: 100%;
-
-    padding: 75px 2% 0 2%;
+    padding: 75px 2% 20px 2%;
 
     position: relative;
+    overflow: hidden;
+}
+
+section#sobre::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+
+    position: absolute;
+    top: 0;
+    left: 50%;
+
+    transform-origin: bottom;
+    transform: translate(-50%, -50px) scale(4);
+
+    /* background-color: #76aedf; */
+    background: linear-gradient(90deg,var(--cor),var(--cor2));
 }
 
 section#sobre .title-sobre {
