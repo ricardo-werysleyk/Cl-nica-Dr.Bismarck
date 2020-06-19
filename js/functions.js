@@ -32,6 +32,7 @@ function indicador(e) {
 itemMenu.forEach(link => {
     link.addEventListener('click', (e) => {
         indicador(e.target);
+        scrollToSmooth( e.target.innerText );
     })
 })
 
@@ -56,6 +57,29 @@ function animNav() {
     
 }
 
+function scrollToSmooth(sessao) {
+    if(sessao == "SOBRE A CLÍNICA"){
+        scrollPersonalizado(sectionSobre.offsetTop);
+    }else if(sessao == "ESPECIALIDADES"){
+        scrollPersonalizado(sectionEspecialidades.offsetTop);
+    }else if(sessao == "CONVÊNIOS"){
+        scrollPersonalizado(sectionConvenios.offsetTop);
+    }
+}
+
+function scrollPersonalizado(n) {
+    var i = 10;
+
+    var int = setInterval(function() {
+
+        window.scrollTo({
+            top: (window.pageYOffset + i)
+        })
+        i += 10;
+        if (window.pageYOffset >= n) clearInterval(int);
+    }, 20);
+}
+
 
 //efeito da scrollBar
 
@@ -71,6 +95,28 @@ function animScroll() {
     var progressHeight = (window.pageYOffset / totalHeight) * 100;
 
     progressbar.style.height = progressHeight + "%";
+}
+
+//efeito botão scrool top
+
+window.addEventListener('scroll', function(){
+    var btnScroll = document.querySelector('.scrollTop');
+
+    btnScroll.classList.toggle('active' , window.scrollY > 500);
+});
+
+function btnScrollTop(){
+
+    var i = 10;
+    var int = setInterval(function() {
+
+        window.scrollTo({
+            top: (window.pageYOffset - i)
+        })
+        i += 10;
+        if (window.pageYOffset == 0) clearInterval(int);
+    }, 20);
+
 }
 
 
@@ -237,3 +283,33 @@ function currentSlide(index) {
     },slideSobreTimer);
 
 }
+
+
+//funções extras
+
+function retira_acentos(str) 
+{
+
+    com_acento = `ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐ
+ÑÒÓÔÕÖØÙÚÛÜ
+ÝŔÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþÿŕ`;
+
+sem_acento = `AAAAAAACEEEEIIIIDN
+OOOOOOUUUUYRsBaaa
+aaaaceeeeiiiionoooooouuuuybyr`;
+    novastr="";
+    for(i=0; i<str.length; i++) {
+        troca=false;
+        for (a=0; a<com_acento.length; a++) {
+            if (str.substr(i,1)==com_acento.substr(a,1)) {
+                novastr+=sem_acento.substr(a,1);
+                troca=true;
+                break;
+            }
+        }
+        if (troca==false) {
+            novastr+=str.substr(i,1);
+        }
+    }
+    return novastr;
+} 

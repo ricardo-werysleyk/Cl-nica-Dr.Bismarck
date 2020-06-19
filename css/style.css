@@ -34,6 +34,47 @@ html, body {
     margin: 0 auto;
 }
 
+.scrollTop {
+    position: fixed;
+    bottom: 110%;
+    right: 20px;
+    z-index: 10;
+
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+
+    background: linear-gradient(45deg,hsla(208, 79%, 28%, 0.7),hsla(188, 68%, 47%, 0.7));
+    box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    visibility: hidden;
+    opacity: 0;
+    transition: .5s;
+    
+    transform: scale(.8);
+}
+.scrollTop > svg {
+    width: 40px;
+}
+.scrollTop > svg > path {
+    fill: rgba(255, 255, 255, 0.7);
+}
+.scrollTop:hover {
+    transform: scale(1);
+}
+
+.scrollTop.active {
+    visibility: visible;
+    opacity: 1;
+
+    bottom: 40px;
+}
+
 #scrollPath {
     position: fixed;
     top: 0;
