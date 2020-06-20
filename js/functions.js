@@ -40,13 +40,8 @@ function animNav() {
     
     if(window.pageYOffset >= 0 && window.pageYOffset < sectionSobre.offsetTop){
         indicador(itemMenu[0]);
-        // MenuDesk.style.backgroundColor = "var(--corTrans)";
     }else if(window.pageYOffset >= sectionSobre.offsetTop && window.pageYOffset < sectionEspecialidades.offsetTop){
         indicador(itemMenu[1]);
-        // MenuDesk.style.backgroundColor = "var(--cor)";
-    }else if(window.pageYOffset >= sectionEspecialidades.offsetTop && window.pageYOffset < sectionConvenios.offsetTop){
-        indicador(itemMenu[2]);
-        // MenuDesk.style.backgroundColor = "var(--cor)";
     }
 
     if(window.pageYOffset >= 0 && window.pageYOffset < 100){
@@ -76,7 +71,7 @@ function scrollPersonalizado(n) {
             top: (window.pageYOffset + i)
         })
         i += 10;
-        if (window.pageYOffset >= n) clearInterval(int);
+        if (window.pageYOffset >= n - 70) clearInterval(int);
     }, 20);
 }
 
@@ -107,14 +102,14 @@ window.addEventListener('scroll', function(){
 
 function btnScrollTop(){
 
-    var i = 10;
-    var int = setInterval(function() {
+    var n = 10;
+    var topo = setInterval(function() {
 
         window.scrollTo({
-            top: (window.pageYOffset - i)
+            top: (window.pageYOffset - n)
         })
-        i += 10;
-        if (window.pageYOffset == 0) clearInterval(int);
+        n += 10;
+        if (window.pageYOffset == 0) clearInterval(topo);
     }, 20);
 
 }
@@ -313,3 +308,34 @@ aaaaceeeeiiiionoooooouuuuybyr`;
     }
     return novastr;
 } 
+
+
+//GRADE JS- GRADIENT DE ACORDO COM A IMAGEM
+
+window.addEventListener('load', function(){
+    /*
+        A NodeList of all your image containers (Or a single Node).
+        The library will locate an <img /> within each
+        container to create the gradient from.
+     */
+    Grade(document.querySelectorAll('.gradient-wrap'))
+})
+
+//swiper js
+
+var swiper = new Swiper('.swiper-container', {
+    effect: 'coverflow',
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: 'auto',
+    coverflowEffect: {
+      rotate: 50,
+      stretch: 0,
+      depth: 100,
+      modifier: 1,
+      slideShadows: true,
+    },
+    // pagination: {
+    //   el: '.swiper-pagination',
+    // },
+});

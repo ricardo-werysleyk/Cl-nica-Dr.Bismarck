@@ -30,7 +30,7 @@ html, body {
 
 .container {
     width: 100%;
-    max-width: 1024px;
+    max-width: 1080px;
     margin: 0 auto;
 }
 
@@ -328,10 +328,12 @@ section#inicio #desktop > ul li a p {
 
 section#sobre {
     width: 100%;
-    padding: 75px 2% 20px 2%;
+    padding: 50px 2% 20px 2%;
 
     position: relative;
     overflow: hidden;
+    /* background: linear-gradient(to right, var(--cor),var(--cor2)); */
+    background-color: #4491d4;
 }
 
 section#sobre::before {
@@ -348,7 +350,7 @@ section#sobre::before {
     transform: translate(-50%, -50px) scale(4);
 
     /* background-color: #76aedf; */
-    background: linear-gradient(90deg,var(--cor),var(--cor2));
+    background: white;
 }
 
 section#sobre .title-sobre {
@@ -356,11 +358,17 @@ section#sobre .title-sobre {
     min-width: 600px;
     height: 90px;
     padding-left: 15px;
+    margin-bottom: 15px;
 
     border-radius: 0 25px 25px 0;
 
     background-color: var(--cor);
     position: relative;
+
+    box-shadow: -2px -2px 10px white,
+                inset 2px 2px 10px rgba(0, 0, 0, .05),
+                inset -2px -2px 10px white,
+                2px 2px 10px rgba(0, 0, 0, .05);
 }
 section#sobre .title-sobre a {
     width: 200px;
@@ -550,6 +558,25 @@ section#sobre .sobreBullets {
     width: 100%;
     height: 100%;
     padding: 80px 2%;
+    position: relative;
+    overflow: hidden;
+}
+
+#especialidades::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+
+    position: absolute;
+    top: 0;
+    left: 50%;
+
+    transform-origin: bottom;
+    transform: translate(-50%, -50px) scale(4);
+
+    background-color: #4491d4;
+    /* background: linear-gradient(to right, var(--cor),var(--cor2)); */
 }
 
 .cards {
@@ -576,21 +603,27 @@ section#sobre .sobreBullets {
     position: absolute;
     left: 50%;
     top: 0;
+    z-index: 2;
     transform: translateX(-50%);
 
     background-color: var(--cor);
     color: var(--corTextApresentacao);
+    /* box-shadow: -4px -4px 15px rgba(255, 255, 255, 1),
+                inset 4px 4px 15px rgba(0, 0, 0, .5),
+                inset -4px -4px 15px rgba(255, 255, 255, 1),
+                4px 4px 15px rgba(0, 0, 0, .5); */
     /* -webkit-box-reflect: below 1px linear-gradient(to bottom,transparent, transparent,#0005); */
 }
 
 .ponta {
-    width: 60px;
-    height: 60px;
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
 
     position: absolute;
     left: 50%;
-    top: -5px;
-    z-index: -1;
+    top: 30px;
+    z-index: 1;
     transform: translateX(-50%) rotate(45deg);
 
     background-color: var(--cor);
@@ -855,6 +888,69 @@ section#sobre .sobreBullets {
 
 #convenios {
     width: 100%;
-    height: 100%;
-    background-color: #61cf70;
+    padding: 70px 0;
+}
+
+#convenios .container {
+    position: relative;
+}
+
+#convenios .title-convenios {
+    width: 50%;
+    min-width: 600px;
+    height: 90px;
+    padding: 15px;
+    margin-bottom: 15px;
+
+    border-radius: 25px 0 0 25px;
+
+    background-color: var(--cor);
+    position: absolute;
+    top: -45px;
+    right: 0;
+
+    box-shadow: -2px -2px 10px white,
+                inset 2px 2px 10px rgba(0, 0, 0, .05),
+                inset -2px -2px 10px white,
+                2px 2px 10px rgba(0, 0, 0, .05);
+    
+    text-align: right;
+    font-family: 'Lato', sans-serif;
+    color: var(--corTextApresentacao);
+}
+
+#convenios .cardsContainer .convenio-wraper {
+    width: 100%;
+    min-width: 100%;
+    padding: 25px;
+}
+
+#convenios .cardsContainer .convenio-wraper > div {
+    display: grid;
+    align-content: center;
+    justify-content: center;
+
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+
+    padding: 8px;
+
+    user-select: none;
+}
+
+#convenios .cardsContainer .convenio-wraper > div > img {
+    width: 100%;
+}
+
+.swiper-container {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 300px;
+    height: 300px;
 }
