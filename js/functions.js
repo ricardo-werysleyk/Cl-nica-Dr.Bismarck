@@ -14,6 +14,7 @@ var apresentacao = document.querySelector('.apresentacao');
 var sectionSobre = document.getElementById('sobre');
 var sectionEspecialidades = document.getElementById('especialidades');
 var sectionConvenios = document.getElementById('convenios');
+var sectionContato = document.getElementById('contato');
 
 
 //efeito da navbar selecionada
@@ -59,6 +60,8 @@ function scrollToSmooth(sessao) {
         scrollPersonalizado(sectionEspecialidades.offsetTop);
     }else if(sessao == "CONVÊNIOS"){
         scrollPersonalizado(sectionConvenios.offsetTop);
+    }else if(sessao == "AGENDE SUA CONSULTA"){
+        scrollPersonalizado(sectionContato.offsetTop);
     }
 }
 
@@ -339,3 +342,60 @@ var swiper = new Swiper('.swiper-container', {
     //   el: '.swiper-pagination',
     // },
 });
+
+
+// api de cidades e estados
+
+document.querySelector("select[name=uf]").addEventListener("change", getCities);
+document.querySelector("select[name=cidade]").addEventListener("change", getCity);
+// document.querySelector("button[type=submit]").addEventListener("click", enviarForm);
+
+
+populateUFs(); 
+
+function populateUFs(){
+    const ufSelect = document.querySelector("select[name=uf]");
+    const url = "https://servicodados.ibge.gov.br/api/v1/localidades/estados";
+
+    requisicaoFetch(url,ufSelect);
+}
+
+function getCity(event){
+    const cityInput = document.querySelector("input[name=city]");
+
+    const indexOfSelectedCity = event.target.selectedIndex;
+
+    cityInput.value = event.target.options[indexOfSelectedCity].text;
+}
+
+function getCities(event) {
+    const citiesSelect = document.querySelector("select[name=cidade]");
+    // const stateInput = document.querySelector("input[name=state]");
+
+
+    citiesSelect.innerHTML = '<option value="">Selecione a cidade</option>';
+
+    // const indexOfSelectedState = event.target.selectedIndex;
+
+    // stateInput.value = event.target.options[indexOfSelectedState].text;
+
+    const ufValue = event.target.value;
+    const url = `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${ufValue}/municipios`;
+    requisicaoFetch(url,citiesSelect);
+    
+    
+    if(event.target.value != '')
+        citiesSelect.removeAttribute('disabled');
+    else
+        citiesSelect.setAttribute('disabled',true);
+}
+
+function requisicaoFetch(url,node){
+    fetch(url)
+        .then( res => res.json() )
+        .then( data => {
+            for(const obj of data){
+                node.innerHTML += `<option value="${obj.id}">${obj.nome}</option>`;
+            }
+        });
+}
