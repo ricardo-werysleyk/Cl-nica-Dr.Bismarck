@@ -262,6 +262,8 @@ section#inicio #desktop {
 
     display: flex;
     justify-content: center;
+
+    user-select: none;
 }
 
 section#inicio #desktop .logo {
@@ -364,6 +366,8 @@ section#sobre .title-sobre {
 
     background-color: var(--cor);
     position: relative;
+
+    user-select: none;
 }
 section#sobre .title-sobre a {
     width: 200px;
@@ -387,6 +391,8 @@ section#sobre .title-sobre a {
 
     background-color: #61cf70;
     box-shadow: -2px 2px 2px var(--sombra);
+
+    user-select: none;
 }
 section#sobre .title-sobre a:hover {
     background-color: #46bb55;
@@ -603,11 +609,7 @@ section#sobre .sobreBullets {
 
     background-color: var(--cor);
     color: var(--corTextApresentacao);
-    /* box-shadow: -4px -4px 15px rgba(255, 255, 255, 1),
-                inset 4px 4px 15px rgba(0, 0, 0, .5),
-                inset -4px -4px 15px rgba(255, 255, 255, 1),
-                4px 4px 15px rgba(0, 0, 0, .5); */
-    /* -webkit-box-reflect: below 1px linear-gradient(to bottom,transparent, transparent,#0005); */
+    pointer-events: none;
 }
 
 .ponta {
@@ -674,6 +676,7 @@ section#sobre .sobreBullets {
     font-weight: bold;
     text-align: center;
     font-size: 18px;
+    user-select: none;
 }
 .card:hover p{
     opacity: 1;
@@ -908,6 +911,9 @@ section#sobre .sobreBullets {
     text-align: center;
     font-family: 'Lato', sans-serif;
     color: var(--corTextApresentacao);
+
+    box-shadow: -3px 3px 5px var(--sombra);
+    pointer-events: none;
 }
 
 #convenios .cardsContainer{
@@ -955,10 +961,10 @@ section#sobre .sobreBullets {
 
 section#contato {
     width: 100%;
-    padding-top: 70px;
+    padding-top: 60px;
 }
 
-section#contato h1 {
+section#contato > .container > h1 {
     position: relative;
     left: 50%;
     transform: translate(-50%,50%);
@@ -971,6 +977,9 @@ section#contato h1 {
     display: inline-block;
     padding: 8px 25px;
     border-radius: 8px;
+
+    box-shadow: -3px 3px 5px var(--sombra);
+    pointer-events: none;
 }
 
 section#contato .formulario {
@@ -982,6 +991,7 @@ section#contato .formulario {
 
     background-image: linear-gradient(to top, #09203f 0%, #537895 100%);
     /* background-image: linear-gradient(to left, #3ab5b0 0%, #3d99be 31%, #56317a 100%); */
+    box-shadow: -3px 3px 5px var(--sombra);
 }
 
 .img-contact {
@@ -1125,5 +1135,58 @@ section#contato button:hover {
 
 section#contato .localizacao {
     width: 100%;
-    height: 500px;
+    height: 300px;
+    margin: 150px 0;
+
+    display: flex;
+    position: relative;
+}
+
+section#contato .localizacao .map{
+    width: 50%;
+    height: 100%;
+    border: 2px solid #282828;
+}
+section#contato .localizacao .map #map{
+    width: 100%;
+    height: 100%;
+}
+
+section#contato .localizacao .informacao{
+    width: 50%;
+    height: 100%;
+
+    padding-left: 10px;
+
+    color: #282828;
+    font-family: 'Lato', sans-serif;
+}
+
+section#contato .localizacao > h1 {
+    position: absolute;
+    left: 50%;
+    top: -100px;
+    transform: translate(-50%,50%);
+    color: var(--corTextApresentacao);
+    font-weight: normal;
+    background-color: var(--cor);
+
+    display: inline-block;
+    padding: 8px 25px;
+    border-radius: 8px;
+
+    box-shadow: -3px 3px 5px var(--sombra);
+
+    pointer-events: none;
+}
+section#contato .localizacao .informacao h3 {
+    margin: 15px 0;
+}
+section#contato .localizacao .informacao p {
+    margin: 10px 0;
+}
+section#contato .localizacao .informacao i {
+    color: #282828;
+    font-size: 20px;
+    margin-right: 8px;
 }

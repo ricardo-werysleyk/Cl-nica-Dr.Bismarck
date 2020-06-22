@@ -399,3 +399,24 @@ function requisicaoFetch(url,node){
             }
         });
 }
+
+
+//GOOGLE MAPS
+
+// var map;
+// function initMap() {
+//   map = new google.maps.Map(document.getElementById("map"), {
+//     center: { lat: -34.397, lng: 150.644 },
+//     zoom: 8
+//   });
+// }
+
+function initMap() {
+    // The location of clinica
+    var clinica = {lat: -2.4941578, lng: -44.2802821};
+    // The map, centered at clinica
+    var map = new google.maps.Map(
+        document.getElementById('map'), {zoom: 18, center: clinica, mapTypeId: 'satellite'});
+    // The marker, positioned at clinica
+    var marker = new google.maps.Marker({position: clinica, map: map});
+}
